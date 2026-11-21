@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# VS Code
+.vscode/
+
+# IntelliJ / Eclipse 
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Daten deines Programms
+data/
+
+# Secrets
+*.env
