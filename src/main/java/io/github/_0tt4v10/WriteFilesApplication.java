@@ -19,7 +19,7 @@ public class WriteFilesApplication
     public static void main( String[] args ) throws IOException {
         // Create new File named "Buch"
         FileRepository file = new FileRepository(1, "Buch");
-        FileRepository file2 = new FileRepository(1, "Book");
+        FileRepository file2 = new FileRepository(2, "Book");
         file.createFile("data");
         file2.createFile("data");
         
