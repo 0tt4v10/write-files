@@ -25,6 +25,27 @@ public class WriteFilesApplication {
         List<FileRepository> files = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
+        // Ask if the data folder should be deleted
+        File dataFolder = new File("data");
+
+        if (dataFolder.exists()) {
+            System.out.print("Delete folder data? (y/n): ");
+            String answer = sc.nextLine().trim();
+
+            if (answer.equalsIgnoreCase("y")) {
+                File[] content = dataFolder.listFiles();
+
+                if (content != null) {
+                    for (File f : content) {
+                        f.delete();
+                    }
+                }
+
+                dataFolder.delete();
+                System.out.println("Folder data deleted.");
+            }
+        }
+
         // Create folder data if it does not exist
         new File("data").mkdirs();
 
