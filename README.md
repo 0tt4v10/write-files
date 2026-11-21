@@ -1,4 +1,4 @@
-# write files
+# write-files
 
 A small Java console tool for selecting text files, writing text into the, and printing their content.
 
