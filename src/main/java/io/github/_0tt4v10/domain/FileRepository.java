@@ -1,3 +1,11 @@
+/*
+ * Author: 0tt4v10
+ * Description: creates a file with id name and folder
+ * Created: 2026-11-21
+ * Copyright (c) 2026 0tt4v10
+ * License: MIT
+ */
+
 package io.github._0tt4v10.domain;
 
 import java.io.File;
