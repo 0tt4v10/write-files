@@ -18,8 +18,5 @@ Thumbs.db
 # Logs
 *.log
 
-# Daten deines Programms
-data/
-
 # Secrets
 *.env
