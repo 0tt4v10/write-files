@@ -24,6 +24,8 @@ public class FileRepository {
         new File(folder, name).createNewFile();
     }
 
+    public String getName() { return name;}
+
     @Override
     public String toString() {
         return "FileRepository{id=" + id + ", name=" + name + "}";

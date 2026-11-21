@@ -8,40 +8,65 @@
 
 package io.github._0tt4v10;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import io.github._0tt4v10.domain.FileRepository;
 import io.github._0tt4v10.domain.FileContentRead;
 import io.github._0tt4v10.domain.FileContentWriter;
+import java.util.List;
 
-public class WriteFilesApplication 
-{
-    public static void main( String[] args ) throws IOException {
-        // Create Scanner Object
+public class WriteFilesApplication {
+    public static void main(String[] args) throws IOException {
+
+        // Create new Array List for all files
+        List<FileRepository> files = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Create new File name: ");
-        String input1 = sc.nextLine();
+        // Create folder data if it does not exist
+        new File("data").mkdirs();
 
-        // Create new File named "Buch"
-        FileRepository file = new FileRepository(1, "Buch");
-        FileRepository file2 = new FileRepository(2, "Book");
+        // Ask for user input
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Create new File name: ");
+            String input = sc.nextLine().trim();
 
-        FileRepository scannerObject = new FileRepository(3, input1);
-        scannerObject.createFile("data");
+            // Ask again if the name is empty
+            while (input.isEmpty()) {
+                System.out.print("Name must not be empty, try again: ");
+                input = sc.nextLine().trim();
+            }
 
-        file.createFile("data");
-        file2.createFile("data");
-        
-        // Write Content in "Buch.txt"
+            // Remove ".txt" because the constructor adds it
+            if (input.endsWith(".txt")) {
+                input = input.substring(0, input.length() - 4);
+            }
+
+            files.add(new FileRepository(i + 1, input));
+        }
+
+        // for each file in files create the file in folder data
+        for (FileRepository file : files) {
+            try {
+                file.createFile("data");
+            } catch (IOException e) {
+                System.out.println("Could not create file: " + e.getMessage());
+            }
+        }
+
+        // Write content in every file
         FileContentWriter fw = new FileContentWriter();
-        fw.fileWrite("Hello", "Buch", "data");
-        System.out.println(file.toString());
+        for (FileRepository file : files) {
+            fw.fileWrite("Hello", file.getName(), "data");
+        }
 
-        // Read Content in "Buch.txt"
+        // Read content of every file
         FileContentRead fcr = new FileContentRead();
-        fcr.FileRead("Buch", "data");
+        for (FileRepository file : files) {
+            fcr.FileRead(file.getName(), "data");
+        }
 
         sc.close();
     }

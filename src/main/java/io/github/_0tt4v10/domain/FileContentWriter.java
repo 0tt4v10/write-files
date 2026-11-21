@@ -16,10 +16,11 @@ public class FileContentWriter {
 
 
     public void fileWrite(String content, String name, String folder) {
-        File file = new File(folder, name + ".txt");
+        File file = new File(folder, name);
 
         if (!file.exists()) {
             System.out.println("File not found: " + file.getPath());
+            return;
         }
 
         try (FileWriter writer = new FileWriter(file, true)) {
