@@ -11,16 +11,23 @@ package io.github._0tt4v10;
 import java.io.IOException;
 
 import io.github._0tt4v10.domain.FileRepository;
+import io.github._0tt4v10.domain.FileContentRead;
 import io.github._0tt4v10.domain.FileContentWriter;
 
 public class WriteFilesApplication 
 {
     public static void main( String[] args ) throws IOException {
+        // Create new File named "Buch"
         FileRepository file = new FileRepository(1, "Buch");
         file.createFile("data");
 
+        // Write Content in "Buch.txt"
         FileContentWriter fw = new FileContentWriter();
-        fw.fileWrite("Hello", "Buch.txt", "data");
+        fw.fileWrite("Hello", "Buch", "data");
         System.out.println(file.toString());
+
+        // Read Content in "Buch.txt"
+        FileContentRead fcr = new FileContentRead();
+        fcr.FileRead("Buch", "data");
     }
 }
